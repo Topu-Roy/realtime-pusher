@@ -8,13 +8,14 @@ export const env = createEnv({
     DATABASE_URL: z.string().url(),
     DIRECT_URL: z.string().url(),
 
-    PUSHER_APP_ID: z.string().min(1),
-    PUSHER_KEY: z.string().min(1),
     PUSHER_SECRET: z.string().min(1),
-    PUSHER_CLUSTER: z.string().min(1),
+    PUSHER_APP_ID: z.string().min(1),
   },
 
-  client: {},
+  client: {
+    NEXT_PUBLIC_PUSHER_KEY: z.string().min(1),
+    NEXT_PUBLIC_PUSHER_CLUSTER: z.string().min(1),
+  },
 
   runtimeEnv: {
     NODE_ENV: process.env.NODE_ENV,
@@ -23,9 +24,9 @@ export const env = createEnv({
     DIRECT_URL: process.env.DIRECT_URL,
 
     PUSHER_APP_ID: process.env.PUSHER_APP_ID,
-    PUSHER_KEY: process.env.PUSHER_KEY,
     PUSHER_SECRET: process.env.PUSHER_SECRET,
-    PUSHER_CLUSTER: process.env.PUSHER_CLUSTER,
+    NEXT_PUBLIC_PUSHER_KEY: process.env.NEXT_PUBLIC_PUSHER_KEY,
+    NEXT_PUBLIC_PUSHER_CLUSTER: process.env.NEXT_PUBLIC_PUSHER_CLUSTER,
   },
 
   skipValidation: !!process.env.SKIP_ENV_VALIDATION,

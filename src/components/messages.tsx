@@ -1,13 +1,9 @@
 "use client"
 
-import { pusherClient } from "@/lib/pusher/pusherConf"
+import { pusherClient } from "@/lib/pusher/client"
 import { memo, useEffect, useState } from "react"
 
-type Props = {
-    roomId: string
-}
-
-function Messages({ roomId }: Props) {
+function Messages({ roomId }: { roomId: string }) {
     const [incomingMessages, setIncomingMessages] = useState<string[]>([])
 
     useEffect(() => {
@@ -18,14 +14,10 @@ function Messages({ roomId }: Props) {
         })
 
         return () => {
+            pusherClient.unbind('incoming-message')
             pusherClient.unsubscribe(roomId)
         }
-    }, [roomId])
-
-
-    useEffect(() => {
-        console.log(incomingMessages)
-    }, [incomingMessages])
+    }, [])
 
     return (
         <div>

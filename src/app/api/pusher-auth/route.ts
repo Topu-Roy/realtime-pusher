@@ -1,4 +1,4 @@
-import { pusherServer } from "@/lib/pusher/pusherConf"
+import { pusherServer } from "@/lib/pusher/client"
 
 export async function POST(req: Request) {
     const data = await req.text()

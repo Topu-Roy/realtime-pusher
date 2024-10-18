@@ -1,6 +1,6 @@
 "use server"
 
-import { pusherServer } from "@/lib/pusher/pusherConf";
+import { pusherServer } from "@/lib/pusher/server";
 import { db } from "@/server/db";
 
 export async function triggerPusher({ message, roomId }: { message: string, roomId: string }) {
